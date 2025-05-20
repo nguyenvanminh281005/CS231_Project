@@ -15,12 +15,11 @@
 ---
 
 ## 📖 Table of Contents
-- [Introduction](#introduction)
-- [Team Members](#team-members)
-- [Course Information](#course-information)
-- [Final Project](#final-project)
-- [Resources](#resources)
-- [License](#license)
+- [Introduction](#-introduction)
+- [Team Members](#-team-members)
+- [Course Information](#-course-information)
+- [Final Project](#-final-project)
+- [Resources](#-resources)
 
 ---
 
