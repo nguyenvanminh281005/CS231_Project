@@ -58,7 +58,6 @@ This project develops a machine learning model to classify animal species from i
 - **Jupyter Notebook**: For experimentation and visualization
 
 ### Repository Structure
-- `./data/`: Dataset for training and testing
 - `./models/`: Trained models and weights
 - `./notebooks/`: Jupyter notebooks for analysis
 - `./src/`: Source code for the project
