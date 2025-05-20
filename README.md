@@ -50,8 +50,7 @@ Welcome to the repository for **CS231.P21.KHTN - Computer Vision**, a course off
 
 ## 💻 Final Project: Animals Classification
 ### Overview
-This project aims to build a machine learning model to classify animal species from images. We use a dataset of animal images and apply deep learning techniques to achieve high accuracy.
-
+This project develops a machine learning model to classify animal species from images. We use the [Animal Image Dataset - 90 Different Animals](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data) from Kaggle, containing 5,400 images across 90 species, to train and evaluate our model.
 ### Technologies
 - **Python**: Core programming language
 - **TensorFlow/PyTorch**: Deep learning frameworks
