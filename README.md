@@ -53,7 +53,7 @@ Welcome to the repository for **CS231.P21.KHTN - Computer Vision**, a course off
 This project develops a machine learning model to classify animal species from images. We use the [Animal Image Dataset - 90 Different Animals](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data) from Kaggle, containing 5,400 images across 90 species, to train and evaluate our model.
 ### Technologies
 - **Python**: Core programming language
-- **TensorFlow/PyTorch**: Deep learning frameworks
+- **TensorFlow**: Deep learning frameworks
 - **OpenCV**: Image processing
 - **Jupyter Notebook**: For experimentation and visualization
 
@@ -61,17 +61,57 @@ This project develops a machine learning model to classify animal species from i
 - `./models/`: Trained models and weights
 - `./notebooks/`: Jupyter notebooks for analysis
 - `./src/`: Source code for the project
-
+- `./git/`: Source to commit git
+- `./cv-fe/`: source of frontend 
 ### Example Code
 ```python
-import cv2
-import tensorflow as tf
 
-# Load and preprocess image
-img = cv2.imread('animal.jpg')
-img = cv2.resize(img, (224, 224))
-img = img / 255.0  # Normalize
+base_model = EfficientNetB3(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+for layer in base_model.layers[-50:]:
+    layer.trainable = True
 
-# Load model and predict
-model = tf.keras.models.load_model('models/animal_classifier.h5')
-prediction = model.predict(img)
+model = Sequential([
+    base_model,
+    GlobalAveragePooling2D(),
+    Dense(512, activation='relu'),
+    Dropout(0.5),
+    Dense(len(animal_names), activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy')
+
+model.load_weights("../models/my_model_weights.h5")
+
+model.summary()
+
+## 📚 Resources
+- [Animal Image Dataset - 90 Different Animals](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data)
+- [EfficientNet Paper](https://arxiv.org/abs/1905.11946)
+- [TensorFlow Documentation](https://www.tensorflow.org/api_docs)
+- [OpenCV Documentation](https://docs.opencv.org/)
+- [Computer Vision Course Materials](https://site.uit.edu.vn)
+
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+MIT License
+
+Copyright (c) 2025 CS231.P21.KHTN Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
