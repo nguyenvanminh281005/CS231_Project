@@ -84,34 +84,23 @@ model.load_weights("../models/my_model_weights.h5")
 
 model.summary()
 
+y_pred = np.argmax(model.predict(X_test), axis=-1)
+print(classification_report(y_test, y_pred, target_names=label_encoder.classes_))
+
+fig, axes = plt.subplots(2, 5, figsize=(20, 8))
+axes = axes.flatten()
+for i, ax in enumerate(axes):
+    ax.imshow(X_test[i])
+    ax.axis('off')
+    ax.set_title(f'Actual: {label_encoder.inverse_transform([y_test[i]])[0]}\nPredicted: {label_encoder.inverse_transform([y_pred[i]])[0]}')
+plt.tight_layout()
+plt.show()
+
+```
+
 ## 📚 Resources
 - [Animal Image Dataset - 90 Different Animals](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data)
 - [EfficientNet Paper](https://arxiv.org/abs/1905.11946)
 - [TensorFlow Documentation](https://www.tensorflow.org/api_docs)
 - [OpenCV Documentation](https://docs.opencv.org/)
 - [Computer Vision Course Materials](https://site.uit.edu.vn)
-
-## 📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-MIT License
-
-Copyright (c) 2025 CS231.P21.KHTN Team
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
