@@ -18,7 +18,7 @@
 - [Introduction](#-introduction)
 - [Team Members](#-team-members)
 - [Course Information](#-course-information)
-- [Final Project](#-final-project)
+- [Final Project](#-final-project-animals-classification)
 - [Resources](#-resources)
 
 ---
